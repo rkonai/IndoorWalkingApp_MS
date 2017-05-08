@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">Indoor Test</string>
+
+    <string name="sampleText">Sample text</string>
+
+    <string name="selectTestLabel">Select a test</string>
+    <string name="walkingIndoorLabel">Indoor Walking</string>
+    <string name="walkingIndoorTestLabel">Indoor Walking Test</string>
+
+    <string name="mainMenuBtnLabel">Main Menu</string>
+
+    <string name="instructionsLabel">Instructions</string>
+    <string name="viewProgressLabel">View Progress</string>
+    <string name="takeTestLabel">Take Test</string>
+    <string name="backBtnLabel">Back</string>
+    <string name="beginLabel">Begin</string>
+    <string name="cancelLabel">Cancel</string>
+    <string name="calibrateLabel">Calibrate</string>
+    <string name="calibrationLabel">Calibration</string>
+    <string name="calibrateDeviceLabel">Calibrate Device</string>
+    <string name="progressLabel">Progress</string>
+    <string name="dateLabel">Test Date</string>
+
+    <string name="leftLowerCase">left</string>
+    <string name="leftUpperCase">Left</string>
+    <string name="rightLowerCase">right</string>
+    <string name="rightUpperCase">Right</string>
+    <string name="selectHandLabel">Select which hand to test first</string>
+
+
+    <string name="okayLabel">Okay</string>
+    <string name="testResultsLabel">Test Results</string>
+    <string name="stepsLabel">Steps</string>
+    <string name="timeLabel">Time</string>
+    <string name="speedLabel">Speed</string>
+
+    <string name="clearSavedResultsBtn">Clear Data</string>
+
+
+    <string name="walkingIndoorProgressSpeedLabel">Speed (steps/sec)</string>
+    <string name="walkingIndoorInstructions">
+        \t1) Measure out 25 feet\n\n
+        2) Turn on your\n
+    \t\t\t\t\t\t phone\'s volume \n\n
+        3) Choose your walking\n
+           \t\t\t\t\t\t
+        assistance\n\n
+        4) Attach phone to\n
+           \t\t\t\t\t\t\t\tyour wrist and press\n
+           \t\t\t\t\t\t\t\t\"Ready!\"\n\n
+        5) Get into walking\n
+           \t\t\t\t\t\t\t\tposition, and start\n
+        \t\t\t\t\t\t\t\twalking after you\n
+        \t\t\t\t\t\t\t\thear a beep.\n\n
+        6) Walk until you reach\n
+        \t\t\t\t\t\t\t\tthe 25
+           foot marker\n\n
+        7) Press \"Done!\" to\n
+           \t\t\t\t\t\t\tcomplete the test\n\n
+        8) Remove phone from\n
+           \t\t\t\t\t\t\t\tyour wrist to view\n
+           \t\t\t\t\t\t\t\tresults\n\n
+    </string>
+
+    <string name="patientIdTitle">Set Patient ID</string>
+    <string name="setPatientIdBtnLabel">Set ID</string>
+    <string name="patientId">Patient ID</string>
+    <string name="title_activity_start_instructions">StartInstructions</string>
+</resources>

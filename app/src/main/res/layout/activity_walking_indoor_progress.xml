@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cmsc436.msproject.walkingTest.indoor.WalkingIndoorProgress">
+
+    <!--<TextView-->
+        <!--android:id="@+id/progressLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="@dimen/margin"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="@dimen/textSize"-->
+        <!--android:textStyle="bold"-->
+        <!--android:text="@string/progressLabel"/>-->
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:scrollbars="vertical">
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*">
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/dateCol"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:textSize="@dimen/textSize"
+                    android:textStyle="bold"
+                    android:text="@string/dateLabel"
+                    android:background="@drawable/cell_shape"/>
+
+                <TextView
+                    android:id="@+id/speedCol"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/cell_shape"
+                    android:gravity="center_horizontal"
+                    android:text="@string/walkingIndoorProgressSpeedLabel"
+                    android:textSize="@dimen/textSize"
+                    android:textStyle="bold" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/clearDataBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/textSize"
+        android:text="@string/clearSavedResultsBtn"
+        android:onClick="clearSavedResults"/>
+</RelativeLayout>

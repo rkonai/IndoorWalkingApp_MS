@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cmsc436.msproject">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature android:name="android.hardware.location.network" />
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.ColorBlind">
+        <activity android:name=".walkingTest.indoor.WalkingIndoorMenu">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter android:label="Trial">
+                <action android:name="edu.umd.cmsc436.walk.indoors.action.TRIAL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:label="Practice">
+                <action android:name="edu.umd.cmsc436.walk.indoors.action.PRACTICE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".walkingTest.indoor.WalkingIndoorInstructions"
+            android:label="@string/walkingIndoorLabel">
+            <intent-filter android:label="Help">
+                <action android:name="edu.umd.cmsc436.walk.indoors.action.HELP" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".walkingTest.indoor.WalkingIndoorTest"
+            android:label="@string/walkingIndoorTestLabel" />
+        <activity
+            android:name=".walkingTest.indoor.WalkingIndoorResults"
+            android:label="@string/walkingIndoorLabel" />
+        <activity
+            android:name=".walkingTest.indoor.WalkingIndoorProgress"
+            android:label="@string/walkingIndoorTestLabel" />
+
+        <intent-filter android:label="Help">
+            <action android:name="edu.umd.cmsc436.walk.indoors.action.HISTORY" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+
+        <activity android:name=".walkingTest.indoor.VoiceRecognitionActivity" />
+        <activity android:name=".walkingTest.indoor.CalibrateStep" />
+        <activity android:name=".walkingTest.indoor.CountDownActivity" />
+        <activity android:name=".walkingTest.indoor.StartingInstr"></activity>
+    </application>
+
+</manifest>

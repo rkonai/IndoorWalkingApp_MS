@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cmsc436.msproject.walkingTest.indoor.WalkingIndoorInstructions">
+
+    <TextView
+        android:id="@+id/instructionsLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/margin"
+        android:background="@color/colorPrimary436"
+        android:paddingBottom="@dimen/margin"
+        android:textStyle="bold"
+        android:textSize="@dimen/textSize"
+        android:text="@string/instructionsLabel"/>
+
+    <ScrollView
+        android:id="@+id/instructionsSrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/instructionsLabel"
+        android:scrollbars="vertical"
+        android:paddingTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/instructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textSize"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:textAlignment="textStart"
+
+                android:text="@string/walkingIndoorInstructions"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Resume App"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
+                android:textSize="35dp"
+                android:onClick="exitInstructions"/>
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

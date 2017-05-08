@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="cmsc436.msproject.walkingTest.indoor.VoiceRecognitionActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="0dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".7">
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".5"
+                android:textSize="35dp"
+                android:paddingLeft="10dp"
+                android:textAlignment="center"
+                android:paddingTop="15dp"
+                android:textStyle="bold"
+                android:text="Enter Walking Assistance:" />
+
+    </TableRow>
+
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="None"
+                android:layout_weight="1"
+                android:id="@+id/noHelp"
+                android:drawableTop="@drawable/scaler"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:textSize="35dp"
+                android:onClick="startSpeach"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableTop="@drawable/scalercane"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:text="Cane"
+                android:gravity="center"
+                android:textSize="35dp"
+                android:layout_weight="1"
+                android:id="@+id/cane"
+                android:onClick="startSpeach" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableTop="@drawable/scalerwalker"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:text="Walker"
+                android:gravity="center"
+                android:textSize="35dp"
+                android:layout_weight="1"
+                android:id="@+id/walker"
+                android:onClick="startSpeach" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableTop="@drawable/scalerpartner"
+                android:paddingTop="20dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:text="Partner"
+                android:textSize="35dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:id="@+id/partner"
+                android:onClick="startSpeach" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Unable to Walk"
+                android:textSize="35dp"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:id="@+id/unableToWalk"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:onClick="exitWalkingTest"
+                android:textColor="@android:color/white" />
+
+    </TableRow>
+</LinearLayout>

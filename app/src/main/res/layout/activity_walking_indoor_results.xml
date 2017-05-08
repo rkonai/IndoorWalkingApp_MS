@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="cmsc436.msproject.walkingTest.indoor.WalkingIndoorResults">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <TextView
+        android:id="@+id/testResultsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/my_toolbar"
+        android:layout_margin="@dimen/margin"
+        android:paddingTop="10dp"
+        android:gravity="center"
+        android:textSize="@dimen/textSize"
+        android:textStyle="bold"
+        android:paddingBottom="10dp"
+        android:text="@string/testResultsLabel" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/testResultsTextView"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_centerInParent="true"
+        android:scrollbars="vertical">
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*">
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/aideTextView"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/textSize"
+                    android:background="@drawable/cell_shape"
+                    android:paddingLeft="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="Aide"/>
+                <TextView
+                    android:id="@+id/aideDataTextView"
+                    android:paddingLeft="20dp"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/textSize"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@drawable/cell_shape"
+                    android:text="@string/sampleText" />
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/timeLabelTextView"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/textSize"
+                    android:background="@drawable/cell_shape"
+                    android:paddingLeft="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="@string/timeLabel"/>
+                <TextView
+                    android:id="@+id/timeDataTextView"
+                    android:paddingLeft="20dp"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/textSize"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@drawable/cell_shape"
+                    android:text="@string/sampleText" />
+            </TableRow>
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/speedLabelTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:background="@drawable/cell_shape"
+                    android:paddingLeft="20dp"
+                    android:text="@string/speedLabel"
+                    android:textSize="@dimen/textSize"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/speedDataTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:paddingLeft="20dp"
+                    android:textSize="@dimen/textSize"
+                    android:textStyle="bold"
+                    android:text="@string/sampleText"
+                    android:background="@drawable/cell_shape"/>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+    <!--<TextView-->
+        <!--android:id="@+id/numStepsLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="@dimen/margin"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="@dimen/textSize"-->
+        <!--android:textStyle="bold"-->
+        <!--android:text="@string/sampleText"/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/timeLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/numStepsLabel"-->
+        <!--android:layout_marginBottom="@dimen/margin"-->
+        <!--android:layout_marginLeft="@dimen/margin"-->
+        <!--android:layout_marginRight="@dimen/margin"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="@dimen/textSize"-->
+        <!--android:textStyle="bold"-->
+        <!--android:text="@string/sampleText"/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/speedLabel"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/timeLabel"-->
+        <!--android:layout_marginBottom="@dimen/margin"-->
+        <!--android:layout_marginLeft="@dimen/margin"-->
+        <!--android:layout_marginRight="@dimen/margin"-->
+        <!--android:gravity="center"-->
+        <!--android:textSize="@dimen/textSize"-->
+        <!--android:textStyle="bold"-->
+        <!--android:text="@string/sampleText"/>-->
+
+    <Button
+        android:id="@+id/mainMenuBtn"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="35dp"
+        android:text="Exit"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp" />
+
+</RelativeLayout>
