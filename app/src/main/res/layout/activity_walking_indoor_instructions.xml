@@ -38,6 +38,7 @@
                 android:textSize="@dimen/textSize"
                 android:paddingRight="10dp"
                 android:paddingLeft="10dp"
+
                 android:textAlignment="textStart"
 
                 android:text="@string/walkingIndoorInstructions"/>

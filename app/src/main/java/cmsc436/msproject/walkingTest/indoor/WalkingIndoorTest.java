@@ -182,6 +182,7 @@ public class WalkingIndoorTest extends AppCompatActivity implements SensorEventL
 
         android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         // Initialize activity layout views
 //        distanceLabel = (TextView) findViewById(R.id.distanceLabel);
@@ -428,6 +429,7 @@ public class WalkingIndoorTest extends AppCompatActivity implements SensorEventL
 
         //intent.putExtra("DIST",  floatString);
         //intent.putExtra("TIME", testDuration);
+        getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         intent.putExtra("NumSteps", numSteps);
         intent.putExtra("Aide", (String) this.getIntent().getExtras().get("Aide"));
         startActivity(intent);

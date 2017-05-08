@@ -4,7 +4,7 @@
         android:id="@+id/half_overlay"
         android:drawable="@drawable/canethree"
         android:width="70dp"
-        android:height="50dp"
+        android:height="45dp"
         />
 
 </layer-list>
