@@ -12,12 +12,15 @@ import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,18 +28,30 @@ import java.util.List;
 
 import cmsc436.msproject.R;
 
-public class VoiceRecognitionActivity extends AppCompatActivity {
+import edu.umd.cmsc436.frontendhelper.TrialMode;
+import edu.umd.cmsc436.sheets.Sheets;
+
+public class VoiceRecognitionActivity extends AppCompatActivity implements Sheets.Host {
 
     private static final int VOICE_RECOGNITION_REQUEST_CODE = 1001;
-
+    private Sheets sheet;
     private static String typeOfWalking;
     private static final String CHECK_KEY = "CHECK_KEY";
     private static final String CHECK_KEY2 = "CHECK_KEY2";
     private float userDistPerStepCalib;
+    private Button unableToWalk;
+    public static final int LIB_ACCOUNT_NAME_REQUEST_CODE = 1001;
+    public static final int LIB_AUTHORIZATION_REQUEST_CODE = 1002;
+    public static final int LIB_PERMISSION_REQUEST_CODE = 1003;
+    public static final int LIB_PLAY_SERVICES_REQUEST_CODE = 1004;
+
+    //String patientID = TrialMode.getPatientId(launchingIntent);
+    String patientID = "t05p01";
    // float stepsPerSec = 0.0f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_voice_recognition);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -49,12 +64,34 @@ public class VoiceRecognitionActivity extends AppCompatActivity {
         }
 
         writeFloatToSharePref2(userDistPerStepCalib);
+        unableToWalk = (Button) findViewById(R.id.unableToWalk);
 
+        sheet = new Sheets(this, this, getString(R.string.app_name),
+                "1YvI3CjS4ZlZQDYi5PaiA7WGGcoCsZfLoSFM0IdvdbDU" , "13_ig4ShrqxmNlcZum4Urjm8r5wb-GB03MD6my63mOEI");
+        Intent intent = getIntent();
+        unableToWalk.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                float[] trials = {-1, -1, -1, -1, -1};
+                sheet.writeData(Sheets.TestType.INDOOR_WALKING, patientID, -1);
+                sheet.writeTrials(Sheets.TestType.INDOOR_WALKING, patientID, trials);
+                exitWalkingTest(v);
+            }
+        });
         checkVoiceRecognition();
+
+
+    }
+
+    /*SHEETS INTERFACE CODE*/
+    @Override
+    public void onRequestPermissionsResult (int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
+        this.sheet.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
 
-    public void startSpeach(final View view)
+    public void startSpeech(final View view)
     {
         int id = view.getId();
         if (id == R.id.noHelp) typeOfWalking = "No Help";
@@ -79,6 +116,30 @@ public class VoiceRecognitionActivity extends AppCompatActivity {
         PackageManager pm = getPackageManager();
         List<ResolveInfo> activities = pm.queryIntentActivities(new Intent(
                 RecognizerIntent.ACTION_RECOGNIZE_SPEECH), 0);
+    }
+
+    @Override
+    public void notifyFinished(Exception e) {
+        if (e != null) {
+            throw new RuntimeException(e);
+        }
+        Log.i(getClass().getSimpleName(), "Done");
+    }
+
+    @Override
+    public int getRequestCode(Sheets.Action action) {
+        switch (action) {
+            case REQUEST_ACCOUNT_NAME:
+                return LIB_ACCOUNT_NAME_REQUEST_CODE;
+            case REQUEST_AUTHORIZATION:
+                return LIB_AUTHORIZATION_REQUEST_CODE;
+            case REQUEST_PERMISSIONS:
+                return LIB_PERMISSION_REQUEST_CODE;
+            case REQUEST_PLAY_SERVICES:
+                return LIB_PLAY_SERVICES_REQUEST_CODE;
+            default:
+                return -1;
+        }
     }
 
     public void exitWalkingTest(View view)
