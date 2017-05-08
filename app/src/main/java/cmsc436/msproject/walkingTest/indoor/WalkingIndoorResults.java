@@ -177,7 +177,10 @@ public class WalkingIndoorResults extends AppCompatActivity implements Sheets.Ho
                 else if (aide.equals("Cane")) aideType = 1;
                 else if (aide.equals("Walker")) aideType = 2;
                 else if (aide.equals("Partner")) aideType = 3;
+                if(numSteps==0){
 
+                    velocitySPS = 0;
+                }
                 float[] trials = {numSteps, round(testDuration / 1000.0f, 2), distance, round(velocitySPS, 2), aideType};
                 sheet.writeData(Sheets.TestType.INDOOR_WALKING, patientID, round(velocitySPS, 2));
                 sheet.writeTrials(Sheets.TestType.INDOOR_WALKING, patientID, trials);
@@ -226,8 +229,15 @@ public class WalkingIndoorResults extends AppCompatActivity implements Sheets.Ho
         // Display number of steps per second
        // timeDataTextView.setText(this.getIntent().getExtras().get("TIME").toString());
         aideDataTextView.setText((String) this.getIntent().getExtras().get("Aide"));
-        speedDataTextView.setText(round(25f / (testDuration/1000f), 2)
-                + " feet per sec");
+
+        if(numSteps > 0) {
+            speedDataTextView.setText(round(25f / (testDuration / 1000f), 2)
+                    + " feet per sec");
+
+        } else/*steps==0*/ {
+
+            speedDataTextView.setText(0 + " feet per sec");
+        }
 
         // Display test time
         long minutes = TimeUnit.MILLISECONDS.toMinutes((long) testDuration);
