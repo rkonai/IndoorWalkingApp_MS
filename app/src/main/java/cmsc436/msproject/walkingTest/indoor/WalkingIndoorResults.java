@@ -82,6 +82,8 @@ public class WalkingIndoorResults extends AppCompatActivity implements Sheets.Ho
      */
     private float distance;
 
+    private static boolean writtenYet;
+
     /**
      * True if the test results have already been saved to the phone's internal storage, false otherwise
      */
@@ -113,15 +115,11 @@ public class WalkingIndoorResults extends AppCompatActivity implements Sheets.Ho
         speedTextView = (TextView) findViewById(R.id.speedLabelTextView);
         speedDataTextView = (TextView) findViewById(R.id.speedDataTextView);
         mainMenuBtn = (Button) findViewById(R.id.mainMenuBtn);
-        mainMenuBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                finish();
-            }
-        });
+
         tableRows = new TextView[][]{{aideTextView, aideDataTextView},
                 {timeTextView, timeDataTextView},
                 {speedTextView, speedDataTextView}};
+
 
         //init sheets
         sheet = new Sheets(this, this, getString(R.string.app_name),
@@ -131,12 +129,19 @@ public class WalkingIndoorResults extends AppCompatActivity implements Sheets.Ho
         distance = 25f;
         testDuration = (float) intent.getExtras().get(WalkingIndoorUtil.TIME_TAG);
 
+        writtenYet = false;
+
+        mainMenuBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                finish();    }
+        });
 
         if (!WalkingIndoorMenu.isTrialMode) {
 
             Intent launchingIntent = WalkingIndoorMenu.startingIntent;
-            //String patientID = TrialMode.getPatientId(launchingIntent);
-            String patientID = "t05p01";
+            final String patientID = TrialMode.getPatientId(launchingIntent);
             float trialNum = TrialMode.getTrialNum(launchingIntent);
             float trialOutOf = TrialMode.getTrialOutOf(launchingIntent);
             Sheets.TestType testType = TrialMode.getAppendage(launchingIntent);
@@ -162,28 +167,38 @@ public class WalkingIndoorResults extends AppCompatActivity implements Sheets.Ho
 
             } else {*/
 
-                // Get test results
-                testDate = intent.getStringExtra(WalkingIndoorUtil.TEST_DATE_TAG);
-                numSteps = (int) intent.getExtras().get("NumSteps");
-                testDuration = (float) intent.getExtras().get(WalkingIndoorUtil.TIME_TAG);
-                velocitySPS = 25.0 / (testDuration / 1000.0);
-                distance = 25f;
-                //First code is central sheets (maps only speed) second code is for personal sheets (maps float array of trial info)
+            // Get test results
+            testDate = intent.getStringExtra(WalkingIndoorUtil.TEST_DATE_TAG);
+            numSteps = (int) intent.getExtras().get("NumSteps");
+            testDuration = (float) intent.getExtras().get(WalkingIndoorUtil.TIME_TAG);
+            velocitySPS = 25.0 / (testDuration / 1000.0);
+            distance = 25f;
+            //First code is central sheets (maps only speed) second code is for personal sheets (maps float array of trial info)
 
-                //THIS IS FOR TESTING API CALLS
-                String aide = (String) this.getIntent().getExtras().get("Aide");
-                float aideType = 0;
-                if (aide == null || aide.equals("No Help")) aideType = 0;
-                else if (aide.equals("Cane")) aideType = 1;
-                else if (aide.equals("Walker")) aideType = 2;
-                else if (aide.equals("Partner")) aideType = 3;
-                if(numSteps==0){
+            //THIS IS FOR TESTING API CALLS
+            String aide = (String) this.getIntent().getExtras().get("Aide");
+            float aideType = 0;
+            if (aide == null || aide.equals("No Help")) aideType = 0;
+            else if (aide.equals("Cane")) aideType = 1;
+            else if (aide.equals("Walker")) aideType = 2;
+            else if (aide.equals("Partner")) aideType = 3;
 
-                    velocitySPS = 0;
-                }
-                float[] trials = {numSteps, round(testDuration / 1000.0f, 2), distance, round(velocitySPS, 2), aideType};
+            final float aideSent = new Float(aideType);
+            if (numSteps == 0) {
+
+                velocitySPS = 0;
+            }
+
+            float[] trials = {numSteps, round(testDuration / 1000.0f, 2), distance, round(velocitySPS, 2), aideSent};
+
+            if (!writtenYet){
+
                 sheet.writeData(Sheets.TestType.INDOOR_WALKING, patientID, round(velocitySPS, 2));
                 sheet.writeTrials(Sheets.TestType.INDOOR_WALKING, patientID, trials);
+                writtenYet = true;
+            }
+
+
             /*}*/
         }
         displayTestResults();
@@ -206,6 +221,9 @@ public class WalkingIndoorResults extends AppCompatActivity implements Sheets.Ho
         return (float) (Math.round(value * Math.pow(10, scale)) / Math.pow(10, scale));
     }
 
+    private void goBack(){
+        finish();
+    }
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);

@@ -45,8 +45,9 @@ public class VoiceRecognitionActivity extends AppCompatActivity implements Sheet
     public static final int LIB_PERMISSION_REQUEST_CODE = 1003;
     public static final int LIB_PLAY_SERVICES_REQUEST_CODE = 1004;
 
-    //String patientID = TrialMode.getPatientId(launchingIntent);
-    String patientID = "t05p01";
+
+    Intent launchingIntent = WalkingIndoorMenu.startingIntent;
+    String patientID = TrialMode.getPatientId(launchingIntent);
    // float stepsPerSec = 0.0f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -22,11 +22,6 @@ public class WalkingIndoorMenu extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_walking_indoor_menu);
 
-        /*
-            WE NEED TO CHANGE THIS BACK TO TRIAL MODDE AFTER THEY IMPLEMENT TRIAL MODE!!!!!!!!!!!!!
-            AND THE PATIENT ID IN THE RESULTS CLASS
-            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-         */
         //isTrialMode = this.getIntent().getAction().equals("edu.umd.cmsc436.walk.indoors.action.TRIAL");
         isTrialMode = this.getIntent().getAction().equals("edu.umd.cmsc436.walk.indoors.action.PRACTICE");
         startingIntent = this.getIntent();
