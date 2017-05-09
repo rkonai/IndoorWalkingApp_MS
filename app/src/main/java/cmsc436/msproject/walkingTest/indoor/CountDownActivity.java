@@ -18,6 +18,8 @@ import cmsc436.msproject.R;
 
 public class CountDownActivity extends AppCompatActivity {
 
+
+    CountDownTimer timer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,7 @@ public class CountDownActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        new CountDownTimer(6000, 1000) {
+        timer = new CountDownTimer(6000, 1000) {
             TextView mTextField = (TextView) findViewById(R.id.countdown_textview);
 
             public void onTick(long millisUntilFinished) {
@@ -42,8 +44,17 @@ public class CountDownActivity extends AppCompatActivity {
             public void onFinish() {
                 startTest();
             }
-        }.start();
+        };
 
+        timer.start();
+
+    }
+
+    protected void onDestroy(){
+
+        super.onDestroy();
+
+        timer.cancel();
     }
 
     /**

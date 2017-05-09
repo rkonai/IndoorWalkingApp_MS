@@ -135,13 +135,22 @@ public class WalkingIndoorResults extends AppCompatActivity implements Sheets.Ho
             @Override
             public void onClick(View v){
 
-                finish();    }
+               /* Intent intent = new Intent(v.getContext(), VoiceRecognitionActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);*/
+                finishAffinity();
+
+                    }
         });
 
         if (!WalkingIndoorMenu.isTrialMode) {
 
             Intent launchingIntent = WalkingIndoorMenu.startingIntent;
-            final String patientID = TrialMode.getPatientId(launchingIntent);
+            String patientID = TrialMode.getPatientId(launchingIntent);
+            if(patientID == null){
+
+                patientID = "defaultUser";
+            }
             float trialNum = TrialMode.getTrialNum(launchingIntent);
             float trialOutOf = TrialMode.getTrialOutOf(launchingIntent);
             Sheets.TestType testType = TrialMode.getAppendage(launchingIntent);
@@ -191,12 +200,10 @@ public class WalkingIndoorResults extends AppCompatActivity implements Sheets.Ho
 
             float[] trials = {numSteps, round(testDuration / 1000.0f, 2), distance, round(velocitySPS, 2), aideSent};
 
-            if (!writtenYet){
-
                 sheet.writeData(Sheets.TestType.INDOOR_WALKING, patientID, round(velocitySPS, 2));
                 sheet.writeTrials(Sheets.TestType.INDOOR_WALKING, patientID, trials);
                 writtenYet = true;
-            }
+
 
 
             /*}*/

@@ -48,9 +48,12 @@ public class VoiceRecognitionActivity extends AppCompatActivity implements Sheet
 
     Intent launchingIntent = WalkingIndoorMenu.startingIntent;
     String patientID = TrialMode.getPatientId(launchingIntent);
+
+
    // float stepsPerSec = 0.0f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_voice_recognition);
@@ -58,32 +61,25 @@ public class VoiceRecognitionActivity extends AppCompatActivity implements Sheet
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-        Bundle extras = this.getIntent().getExtras();
-        if(extras != null){
-            userDistPerStepCalib = extras.getFloat("CHECK_KEY");
-            writeFloatToSharePref(userDistPerStepCalib);
-        }
-
-        writeFloatToSharePref2(userDistPerStepCalib);
         unableToWalk = (Button) findViewById(R.id.unableToWalk);
+        if(patientID == null){
 
+            patientID = "defaultUser";
+        }
         sheet = new Sheets(this, this, getString(R.string.app_name),
                 "1YvI3CjS4ZlZQDYi5PaiA7WGGcoCsZfLoSFM0IdvdbDU" , "13_ig4ShrqxmNlcZum4Urjm8r5wb-GB03MD6my63mOEI");
-        Intent intent = getIntent();
+
         unableToWalk.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
+        @Override
+        public void onClick(View v){
 
-                float[] trials = {-1, -1, -1, -1, -1};
-                sheet.writeData(Sheets.TestType.INDOOR_WALKING, patientID, -1);
-                sheet.writeTrials(Sheets.TestType.INDOOR_WALKING, patientID, trials);
-                exitWalkingTest(v);
-            }
-        });
-        checkVoiceRecognition();
-
-
-    }
+            float[] trials = {-1, -1, -1, -1, -1};
+            sheet.writeData(Sheets.TestType.INDOOR_WALKING, patientID, -1);
+            sheet.writeTrials(Sheets.TestType.INDOOR_WALKING, patientID, trials);
+            exitWalkingTest(v);
+        }
+    });
+}
 
     /*SHEETS INTERFACE CODE*/
     @Override
@@ -92,7 +88,7 @@ public class VoiceRecognitionActivity extends AppCompatActivity implements Sheet
     }
 
 
-    public void startSpeech(final View view)
+    public void startReadyButtonPage(final View view)
     {
         int id = view.getId();
         if (id == R.id.noHelp) typeOfWalking = "No Help";
@@ -103,21 +99,9 @@ public class VoiceRecognitionActivity extends AppCompatActivity implements Sheet
         Intent intent = new Intent(this, StartingInstr.class);
         intent.putExtra("Aide", typeOfWalking);
         startActivity(intent);
-        finish();
+
     }
 
-
-    public void startSpeechPart2(View view)
-    {
-        speak();
-    }
-
-    public void checkVoiceRecognition() {
-        // Check if voice recognition is present
-        PackageManager pm = getPackageManager();
-        List<ResolveInfo> activities = pm.queryIntentActivities(new Intent(
-                RecognizerIntent.ACTION_RECOGNIZE_SPEECH), 0);
-    }
 
     @Override
     public void notifyFinished(Exception e) {
@@ -149,7 +133,7 @@ public class VoiceRecognitionActivity extends AppCompatActivity implements Sheet
     }
 
 
-    public void speak() {
+  /*  public void speak() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 
         // Specify the calling package to identify your application
@@ -167,8 +151,8 @@ public class VoiceRecognitionActivity extends AppCompatActivity implements Sheet
         //Start the Voice recognizer activity for the result.
         startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
     }
-
-    @Override
+*/
+  /*  @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == VOICE_RECOGNITION_REQUEST_CODE)
 
@@ -211,7 +195,7 @@ public class VoiceRecognitionActivity extends AppCompatActivity implements Sheet
             }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
+*/
     /**
      * Helper method to show the toast message
      **/

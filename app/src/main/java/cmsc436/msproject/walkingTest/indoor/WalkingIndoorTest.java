@@ -420,6 +420,7 @@ public class WalkingIndoorTest extends AppCompatActivity implements SensorEventL
 
 
         Intent intent = new Intent(this, WalkingIndoorResults.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(WalkingIndoorUtil.TEST_DATE_TAG, testDate);
         intent.putExtra(WalkingIndoorUtil.TIME_TAG, testDuration);
         //intent.putExtra(WalkingIndoorUtil.VELOCITY_TAG, aveVelocity);
