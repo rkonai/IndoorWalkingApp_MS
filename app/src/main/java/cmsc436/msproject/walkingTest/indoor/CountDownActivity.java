@@ -77,7 +77,7 @@ public class CountDownActivity extends AppCompatActivity {
     {
         startTestBeep();
         Intent intent = new Intent(this, WalkingIndoorTest.class);
-        intent.putExtra("Aide", (String) (this.getIntent().getStringExtra("Aide")));
+        intent.putExtra("Aide", this.getIntent().getStringExtra("Aide"));
         startActivity(intent);
         finish();
     }

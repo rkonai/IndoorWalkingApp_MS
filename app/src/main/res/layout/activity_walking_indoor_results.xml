@@ -117,41 +117,6 @@
         </TableLayout>
     </ScrollView>
 
-    <!--<TextView-->
-        <!--android:id="@+id/numStepsLabel"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="@dimen/margin"-->
-        <!--android:gravity="center"-->
-        <!--android:textSize="@dimen/textSize"-->
-        <!--android:textStyle="bold"-->
-        <!--android:text="@string/sampleText"/>-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/timeLabel"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/numStepsLabel"-->
-        <!--android:layout_marginBottom="@dimen/margin"-->
-        <!--android:layout_marginLeft="@dimen/margin"-->
-        <!--android:layout_marginRight="@dimen/margin"-->
-        <!--android:gravity="center"-->
-        <!--android:textSize="@dimen/textSize"-->
-        <!--android:textStyle="bold"-->
-        <!--android:text="@string/sampleText"/>-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/speedLabel"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/timeLabel"-->
-        <!--android:layout_marginBottom="@dimen/margin"-->
-        <!--android:layout_marginLeft="@dimen/margin"-->
-        <!--android:layout_marginRight="@dimen/margin"-->
-        <!--android:gravity="center"-->
-        <!--android:textSize="@dimen/textSize"-->
-        <!--android:textStyle="bold"-->
-        <!--android:text="@string/sampleText"/>-->
 
     <Button
         android:id="@+id/mainMenuBtn"

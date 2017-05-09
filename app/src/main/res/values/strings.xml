@@ -3,34 +3,18 @@
 
     <string name="sampleText">Sample text</string>
 
-    <string name="selectTestLabel">Select a test</string>
     <string name="walkingIndoorLabel">Indoor Walking</string>
     <string name="walkingIndoorTestLabel">Indoor Walking Test</string>
 
-    <string name="mainMenuBtnLabel">Main Menu</string>
-
     <string name="instructionsLabel">Instructions</string>
     <string name="viewProgressLabel">View Progress</string>
-    <string name="takeTestLabel">Take Test</string>
-    <string name="backBtnLabel">Back</string>
     <string name="beginLabel">Begin</string>
     <string name="cancelLabel">Cancel</string>
-    <string name="calibrateLabel">Calibrate</string>
-    <string name="calibrationLabel">Calibration</string>
-    <string name="calibrateDeviceLabel">Calibrate Device</string>
-    <string name="progressLabel">Progress</string>
     <string name="dateLabel">Test Date</string>
-
-    <string name="leftLowerCase">left</string>
-    <string name="leftUpperCase">Left</string>
-    <string name="rightLowerCase">right</string>
-    <string name="rightUpperCase">Right</string>
-    <string name="selectHandLabel">Select which hand to test first</string>
 
 
     <string name="okayLabel">Okay</string>
     <string name="testResultsLabel">Test Results</string>
-    <string name="stepsLabel">Steps</string>
     <string name="timeLabel">Time</string>
     <string name="speedLabel">Speed</string>
 
@@ -52,5 +36,4 @@
     <string name="patientIdTitle">Set Patient ID</string>
     <string name="setPatientIdBtnLabel">Set ID</string>
     <string name="patientId">Patient ID</string>
-    <string name="title_activity_start_instructions">StartInstructions</string>
 </resources>

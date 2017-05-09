@@ -135,11 +135,8 @@ public class WalkingIndoorResults extends AppCompatActivity implements Sheets.Ho
             @Override
             public void onClick(View v){
 
-               /* Intent intent = new Intent(v.getContext(), VoiceRecognitionActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);*/
+               /*go back to main front end page*/
                 finishAffinity();
-
                     }
         });
 
@@ -155,26 +152,6 @@ public class WalkingIndoorResults extends AppCompatActivity implements Sheets.Ho
             float trialOutOf = TrialMode.getTrialOutOf(launchingIntent);
             Sheets.TestType testType = TrialMode.getAppendage(launchingIntent);
             int difficulty = TrialMode.getDifficulty(launchingIntent);
-
-            /*if (intent.getStringExtra(WalkingIndoorUtil.VELOCITY_TAG) != null) {
-
-                testDate = intent.getStringExtra(WalkingIndoorUtil.TEST_DATE_TAG);
-                numSteps = Integer.valueOf(intent.getStringExtra("NUM_STEPS"));
-                testDuration = intent.getLongExtra(WalkingIndoorUtil.TIME_TAG, 0);
-
-                //THIS IS FOR TESTING API CALLS
-                String aide = (String) this.getIntent().getExtras().get("Aide");
-                float aideType = 0;
-                if (aide == null || aide.equals("No Help")) aideType = 0;
-                else if (aide.equals("Cane")) aideType = 1;
-                else if (aide.equals("Walker")) aideType = 2;
-                else if (aide.equals("Partner")) aideType = 3;
-
-                float[] trials = {numSteps, round(testDuration / 1000.0f, 2), -1f, -1f, aideType};
-                sheet.writeData(Sheets.TestType.INDOOR_WALKING, patientID, -1f);
-                sheet.writeTrials(Sheets.TestType.INDOOR_WALKING, patientID, trials);
-
-            } else {*/
 
             // Get test results
             testDate = intent.getStringExtra(WalkingIndoorUtil.TEST_DATE_TAG);
@@ -251,8 +228,8 @@ public class WalkingIndoorResults extends AppCompatActivity implements Sheets.Ho
      * Display the user's test results
      */
     private void displayTestResults(){
+
         // Display number of steps per second
-       // timeDataTextView.setText(this.getIntent().getExtras().get("TIME").toString());
         aideDataTextView.setText((String) this.getIntent().getExtras().get("Aide"));
 
         if(numSteps > 0) {

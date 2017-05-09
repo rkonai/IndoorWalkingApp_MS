@@ -11,12 +11,12 @@ import android.view.View;
 
 import cmsc436.msproject.R;
 
-public class StartingInstr extends AppCompatActivity {
+public class ReadyButtonPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_starting_instr);
+        setContentView(R.layout.activity_ready_button_page);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -32,8 +32,6 @@ public class StartingInstr extends AppCompatActivity {
         });
 
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -51,9 +51,6 @@
         <activity
             android:name=".walkingTest.indoor.WalkingIndoorResults"
             android:label="@string/walkingIndoorLabel" />
-        <activity
-            android:name=".walkingTest.indoor.WalkingIndoorProgress"
-            android:label="@string/walkingIndoorTestLabel" />
 
         <intent-filter android:label="Help">
             <action android:name="edu.umd.cmsc436.walk.indoors.action.HISTORY" />
@@ -61,10 +58,9 @@
             <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>
 
-        <activity android:name=".walkingTest.indoor.VoiceRecognitionActivity" />
-        <activity android:name=".walkingTest.indoor.CalibrateStep" />
+        <activity android:name=".walkingTest.indoor.MainStartingPage" />
         <activity android:name=".walkingTest.indoor.CountDownActivity" />
-        <activity android:name=".walkingTest.indoor.StartingInstr"></activity>
+        <activity android:name=".walkingTest.indoor.ReadyButtonPage"></activity>
     </application>
 
 </manifest>

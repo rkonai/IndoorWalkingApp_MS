@@ -49,19 +49,6 @@ import android.widget.Toolbar;
  */
 public class WalkingIndoorTest extends AppCompatActivity implements SensorEventListener,
         LocationListener, StepListener {
-//    /**
-//     * TextView to display the total distance the user has walked
-//     */
-//    private TextView distanceLabel;
-//
-//    /**
-//     * TextView to display the total distance the user has walked
-//     */
-//    private TextView velocityLabel;
-
-
-    /*private static final String CHECK_KEY = "CHECK_KEY";*/
-
 
     /**
      * TextView to display the number of steps the user has taken
@@ -134,7 +121,6 @@ public class WalkingIndoorTest extends AppCompatActivity implements SensorEventL
      */
     private double aveVelocity;
 
-
     /**
      * Current Distance travled
      */
@@ -153,11 +139,6 @@ public class WalkingIndoorTest extends AppCompatActivity implements SensorEventL
     private Sensor pedometer;
     private StepDetector stepDetector;
 
-//    /**
-//     * LocationManager to get the user indoor location
-//     */
-//    LocationManager locationManager;
-
     /**
      * True if the phone contains a Step Detector Sensor, false otherwise
      */
@@ -169,10 +150,8 @@ public class WalkingIndoorTest extends AppCompatActivity implements SensorEventL
     private static final int NETWORK_LOCATION_REQUEST_CODE = 0;
 
     private static final String LOG_TAG = WalkingIndoorTest.class.getSimpleName();
-    private static final String LOCATION_PROVIDER = LocationManager.NETWORK_PROVIDER;
     private static final DateFormat dateFormat = new SimpleDateFormat("M/dd/yy h:mm aa", Locale.US);
     private static final DecimalFormat df = new DecimalFormat("#.#");
-    private static final int VOICE_RECOGNITION_REQUEST_CODE = 1001;
     private float calibratedSteps = 0.0f;
 
     @Override
@@ -183,14 +162,6 @@ public class WalkingIndoorTest extends AppCompatActivity implements SensorEventL
         android.support.v7.widget.Toolbar myToolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-        // Initialize activity layout views
-//        distanceLabel = (TextView) findViewById(R.id.distanceLabel);
-//        String distanceLabelText = "Distance walked: 0 m";
-//        distanceLabel.setText(distanceLabelText);
-//
-//        velocityLabel = (TextView) findViewById(R.id.velocityLabel);
-//        velocityLabel.setText("0 m/s");
 
         numStepsLabel = (TextView) findViewById(R.id.numStepsLabel);
         String numStepsLabelText = "0";
@@ -234,21 +205,6 @@ public class WalkingIndoorTest extends AppCompatActivity implements SensorEventL
         velocityCount = 0;
         aveVelocity = 0;
         currDistance = 0;
-        /*userCalDistancePerStep = readFloatFromSharePref(CHECK_KEY);
-        System.out.println("USER CALC DIST PER STEPPPPP:::::::" + userCalDistancePerStep);*/
-
-//        // Initialize LocationManager
-//        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION )
-//                == PackageManager.PERMISSION_GRANTED) {
-//            Log.d(LOG_TAG, "App has Network Location permission");
-//            displayBeginTestDialogFragment();
-//        }
-//        else{
-//            Log.d(LOG_TAG, "App does not have Network Location permission");
-//            ActivityCompat.requestPermissions(this,
-//                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, NETWORK_LOCATION_REQUEST_CODE);
-//        }
     }
 
 
@@ -266,9 +222,6 @@ public class WalkingIndoorTest extends AppCompatActivity implements SensorEventL
             Calendar cal = Calendar.getInstance();
             testDate = dateFormat.format(cal.getTime());
             try {
-//                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
-//                prevLocation = locationManager.getLastKnownLocation(LOCATION_PROVIDER);
-//                Log.d(LOG_TAG + ".onWindowFocusChanged()", prevLocation.toString());
             }
             catch (SecurityException e){
                 Log.d(LOG_TAG, "locationManager does not have permission for Network Provider");
@@ -293,7 +246,6 @@ public class WalkingIndoorTest extends AppCompatActivity implements SensorEventL
         chronometer.stop();
         unregisterSensors();
         toneGenerator.release();
-//        locationManager.removeUpdates(this);
     }
 
     /**
@@ -356,8 +308,6 @@ public class WalkingIndoorTest extends AppCompatActivity implements SensorEventL
         }
         totalVelocity += velocity;
         velocityCount++;
-//        String text = df.format(velocity) + " m/s";
-//        velocityLabel.setText(text);
     }
 
     /**
@@ -423,13 +373,7 @@ public class WalkingIndoorTest extends AppCompatActivity implements SensorEventL
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(WalkingIndoorUtil.TEST_DATE_TAG, testDate);
         intent.putExtra(WalkingIndoorUtil.TIME_TAG, testDuration);
-        //intent.putExtra(WalkingIndoorUtil.VELOCITY_TAG, aveVelocity);
-        //intent.putExtra(WalkingIndoorUtil.DISTANCE_TAG, distanceWalked);
-        Float retFloat = new Float(currDistance);
-        String floatString = retFloat.toString();
 
-        //intent.putExtra("DIST",  floatString);
-        //intent.putExtra("TIME", testDuration);
         getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         intent.putExtra("NumSteps", numSteps);
         intent.putExtra("Aide", (String) this.getIntent().getExtras().get("Aide"));
@@ -468,23 +412,7 @@ public class WalkingIndoorTest extends AppCompatActivity implements SensorEventL
                     this.finish();
                 }
             }
-
-            // other 'case' lines to check for other permissions this app might request
         }
-    }
-
-
-/*    private void writeFloatToSharePref(float f){
-        SharedPreferences sharedPreferences = getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putFloat(CHECK_KEY,f);
-        editor.apply();
-
-    }*/
-
-    private float readFloatFromSharePref(String key){
-        SharedPreferences sp = getPreferences(Context.MODE_PRIVATE);
-        return sp.getFloat(key, -1);
     }
 
     @Override
